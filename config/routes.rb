@@ -545,6 +545,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :people, :only => [] do
         post :search, on: :collection
+        get :search, on: :collection
       end
 
       resources :slcsp, :only => []  do
