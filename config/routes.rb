@@ -543,6 +543,10 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => {:format => 'xml'} do
     namespace :v1 do
+      resources :people, :only => [] do
+        post :search, on: :collection
+      end
+
       resources :slcsp, :only => []  do
         collection do
           post :plan

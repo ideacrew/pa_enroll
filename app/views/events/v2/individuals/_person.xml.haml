@@ -1,12 +1,41 @@
-%person
-  %id
-    %id= "urn:openhbx:hbx:dc0:resources:v1:person:hbx_id##{person.hbx_id}"
-  = render :partial => "events/v2/shared/person_name", :object => person
-  - if person.addresses.any?
-    %addresses
-      = render :partial => "events/v2/addresses/address", :collection => person.addresses
-  %emails
-    = render :partial => "events/v2/emails/email", :locals => { email: person.work_email_or_best}
-  - if person.phones.any?
-    %phones
-      = render :partial => "events/v2/phones/phone", :collection => person.phones
+%bson_id= individual.id.to_s
+-if Person.person_has_an_active_enrollment?(individual)
+  %enrollment
+    %plan= individual.primary_family.active_household.hbx_enrollments.first.plan.name
+    %carrier= individual.primary_family.active_household.hbx_enrollments.first.plan.carrier_profile.legal_name
+    %premium= individual.primary_family.active_household.hbx_enrollments.first.total_premium
+-else
+  %enrollment not enrolled
+%id
+  %id= individual.hbx_id
+= render :partial => "events/v2/individuals/person", :object => individual
+- if individual.person_relationships.any?
+  %person_relationships
+    - individual.person_relationships.each do |rel|
+      %person_relationship
+        %subject_individual
+          %id= individual.hbx_id
+        %relationship_uri= "urn:openhbx:terms:v1:individual_relationship##{vocab_relationship_map(rel.kind)}"
+        %object_individual
+          %id= rel.relative.hbx_id
+= render :partial => "events/v2/individuals/person_demographics", :object => individual
+- if individual.broker_role.present? 
+  - if !individual.broker_role.broker_agency_profile_id.blank?
+    - broker_role = individual.broker_role
+    - broker_agency_profile = broker_role.broker_agency_profile
+    %broker_roles
+      %broker_role
+        %id
+          %id= broker_role.npn
+        %npn= broker_role.npn
+        %broker_agency
+          %id
+            %id= broker_agency_profile.id
+          %name= broker_agency_profile.legal_name
+          - if !broker_agency_profile.corporate_npn.blank?
+            %npn= broker_agency_profile.corporate_npn
+          - if broker_agency_profile.organization.primary_office_location.present?
+            - office_location = broker_agency_profile.organization.primary_office_location
+            %office_locations
+              = render :partial => "events/v2/organizations/office_location", :object => office_location
+        = render :partial => "events/v2/shared/versioned_resource", :object => broker_role
