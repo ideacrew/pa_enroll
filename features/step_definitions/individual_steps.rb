@@ -292,7 +292,7 @@ And(/I click on back to my account button$/) do
 end
 
 Then(/I should land on home page$/) do
-  expect(page).to have_content 'My DC Health Link'
+  expect(page).to have_content 'My PA Insurance Department'
 end
 
 And(/I click on log out link$/) do

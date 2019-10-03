@@ -60,12 +60,6 @@ PATH
       wkhtmltopdf-binary-edge (~> 0.12.3.0)
 
 PATH
-  remote: components
-  specs:
-    ui_helpers (0.0.1)
-      rails (~> 4.2.3)
-
-PATH
   remote: components/sponsored_benefits
   specs:
     sponsored_benefits (0.0.1)
@@ -77,6 +71,12 @@ PATH
       slim (~> 3.0.8)
       symmetric-encryption (~> 3.6.0)
       virtus (~> 1.0.5)
+
+PATH
+  remote: components
+  specs:
+    ui_helpers (0.0.1)
+      rails (~> 4.2.3)
 
 PATH
   remote: project_gems/effective_datatables-2.6.14
@@ -753,7 +753,6 @@ DEPENDENCIES
   rails (= 4.2.7.1)
   rails-i18n (= 4.0.8)
   recaptcha (= 1.1.0)
-  redcarpet (= 3.4.0)
   redis-rails
   resque
   roo (~> 2.1.0)

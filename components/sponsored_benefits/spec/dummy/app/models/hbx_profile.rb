@@ -120,9 +120,9 @@ class HbxProfile
 
   StateName = "District of Columbia"
   StateAbbreviation = "DC"
-  CallCenterName = "DC Health Link's Customer Care Center"
+  CallCenterName = "PA Insurance Department's Customer Care Center"
   CallCenterPhoneNumber = "1-855-532-5465"
-  ShortName = "DC Health Link"
+  ShortName = "PA Insurance Department"
 
   IndividualEnrollmentDueDayOfMonth = Settings.aca.individual_market.monthly_enrollment_due_on
 
