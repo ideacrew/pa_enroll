@@ -2,7 +2,7 @@
 lock '3.3.5'
 
 set :application, 'enroll'
-set :repo_url, 'https://github.com/dchbx/enroll.git'
+set :repo_url, 'https://github.com/ideacrew/pa_enroll.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -28,7 +28,7 @@ set :bundle_path, nil
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, (fetch(:linked_files, []) | ['config/mongoid.yml', 'config/initializers/devise.rb', 'config/secrets.yml', "config/environments/production.rb", "config/symmetric-encryption.yml",'config/saml.yml', 'config/unicorn.rb', 'eyes/enroll.eye.rb', 'config/ssl/wfpk.pem'])
+set :linked_files, (fetch(:linked_files, []) | ['config/mongoid.yml', 'config/initializers/devise.rb', 'config/secrets.yml', "config/environments/production.rb", "config/symmetric-encryption.yml",'config/saml.yml', 'config/unicorn.rb', 'eyes/enroll.eye.rb']) #, 'config/ssl/wfpk.pem'])
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'pids', 'eye', "public/sbc")
