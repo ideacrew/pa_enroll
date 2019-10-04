@@ -29,8 +29,8 @@ class OpmSeed
     @families = []
     @ces = []
   
-    @client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'pa_enroll_development')
-    # @client = Mongo::Client.new([ '172.30.1.55:27017' ], :database => 'pa_enroll_development', auth_source: 'admin', user:'admin', password:'enrUAT7102*@!')
+    # @client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'pa_enroll_development')
+    @client = Mongo::Client.new([ '172.30.1.56:27017' ], :database => 'enroll_ct_ivl', auth_source: 'admin', user:'admin', password:'enrUAT7102*@!')
   end
 
   def time_rand from = 0.0, to = Time.now
