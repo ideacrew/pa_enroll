@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Api::V1::PeopleController do
+  render_views
   let(:ssn) { "#{rand(100..399)}-55-#{rand(1000..3999)}" }
   let(:person) { FactoryGirl.create :person, ssn: ssn }
 

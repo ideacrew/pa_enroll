@@ -4,7 +4,6 @@ module Api
       rescue_from 'ArgumentError', with: :error
 
       def search
-        puts params.inspect
         if has_valid_search_params?
           params[:person][:dob] = Date.strptime(params[:person][:dob], "%m/%d/%Y") if params.key?(:person) && params[:person].key?(:dob)
           params[:person][:encrypted_ssn] = Person.encrypt_ssn(params[:person].delete(:ssn)) if params.key?(:person) && params[:person].key?(:ssn)
