@@ -756,6 +756,7 @@ DEPENDENCIES
   rails (= 4.2.7.1)
   rails-i18n (= 4.0.8)
   recaptcha (= 1.1.0)
+  redcarpet (= 3.4.0)
   redis-rails
   resque
   roo (~> 2.1.0)

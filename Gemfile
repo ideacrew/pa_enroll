@@ -92,7 +92,7 @@ group :doc do
 end
 
 gem 'ckeditor'
-# gem 'redcarpet', '3.4.0'
+gem 'redcarpet', '3.4.0'
 gem 'slim', '3.0.8'
 gem 'curl'
 gem 'non-stupid-digest-assets', '~> 1.0', '>= 1.0.9'
