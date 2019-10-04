@@ -5,6 +5,8 @@ namespace :xml do
   task :plan_cross_walk, [:files] => :environment do |task, args|
     files = args[:files] || Dir.glob(File.join(Rails.root, "db/seedfiles/plan_xmls", Settings.aca.state_abbreviation.downcase, "cross_walk/2019", "**", "*.xml"))
     files.each do |file_path|
+      puts "*"*80 unless Rails.env.test?
+      puts "processing: #{file_path}" unless Rails.env.test?
       @file_path = file_path
       @current_year = file_path.split("/")[-2].to_i # Retrieve the year of the master xml file you are uploading
       @previous_year = @current_year - 1
@@ -47,7 +49,7 @@ namespace :xml do
       end
       # for scenarios where plan cross walk templates were not provided because
       # there were no plans retired or no new plans present for the renewing year.
-      plan_mapping_hash = { "2017" => "2018", "2018" => "2019" }
+      plan_mapping_hash = { "2017" => "2018", "2018" => "2019", "2019" => "2020" }
       plan_mapping_hash.each do |previous_year, current_year|
         old_plans = Plan.where(active_year: previous_year, renewal_plan_id: nil)
         old_plans.each do |old_plan|
