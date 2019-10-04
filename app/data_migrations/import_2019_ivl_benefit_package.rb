@@ -17,16 +17,15 @@ class Import2019IvlBenefitPackage < MongoidMigrationTask
       bc_period_2019.slcsp_id = slcsp_2019.id
     else
     # create benefit package and benefit_coverage_period for 2019
-      bc_period_2018 = hbx.benefit_sponsorship.benefit_coverage_periods.select { |bcp| bcp.start_on.year == 2018 }.first
-      bc_period_2019 = bc_period_2018.clone
+      bc_period_2019 = hbx.benefit_sponsorship.benefit_coverage_periods.build
       bc_period_2019.title = "Individual Market Benefits 2019"
-      bc_period_2019.start_on = bc_period_2018.start_on + 1.year
-      bc_period_2019.end_on = bc_period_2018.end_on + 1.year
+      bc_period_2019.start_on = Date.new(2019,1,1)
+      bc_period_2019.end_on = Date.new(2019,12,31)
 
       # if we need to change these dates after running this rake task in test or prod environments,
       # we should write a separate script.
-      bc_period_2019.open_enrollment_start_on = Settings.aca.individual_market.open_enrollment.start_on
-      bc_period_2019.open_enrollment_end_on = Settings.aca.individual_market.open_enrollment.end_on
+      bc_period_2019.open_enrollment_start_on = Date.new(2018,11,1)
+      bc_period_2019.open_enrollment_end_on = Date.new(2019,1,31)
 
       bc_period_2019.slcsp = slcsp_2019.id
       bc_period_2019.slcsp_id = slcsp_2019.id

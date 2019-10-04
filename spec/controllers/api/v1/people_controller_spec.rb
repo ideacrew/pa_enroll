@@ -5,10 +5,9 @@ describe Api::V1::PeopleController do
   let(:ssn) { "#{rand(100..399)}-55-#{rand(1000..3999)}" }
   let(:person) { FactoryGirl.create :person, ssn: ssn }
 
-  context 'valid with downcased first name, downcased last name and dob' do
+  context 'valid with hbx_id and dob' do
     before do
-      post :search, person: { first_name: person.first_name.downcase,
-                              last_name: person.last_name.downcase,
+      post :search, person: { hbx_id: person.hbx_id,
                               dob: person.dob }
     end
 
