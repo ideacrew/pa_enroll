@@ -4,11 +4,11 @@ class AhsDocsReport
             xml.root {
             xml.type "verification"
                 xml.user {
-                    xml.id doc_owner.person.id.to_s
-                    xml.hbx_id doc_owner.person.hbx_id
-                    xml.ssn doc_owner.person.ssn
-                    xml.dob doc_owner.person.dob
-                    xml.phone_number doc_owner.person.phones.first.try(&:full_phone_number) || "123-456-7890"
+                    xml.id doc_owner.id.to_s
+                    xml.hbx_id doc_owner.hbx_id
+                    xml.ssn doc_owner.ssn
+                    xml.dob doc_owner.dob
+                    xml.phone_number doc_owner.phones.first.try(&:full_phone_number) || "123-456-7890"
                 }
                 xml.document {
                     xml.timestamp Time.now
@@ -20,6 +20,7 @@ class AhsDocsReport
             }
         end
         payload = builder.to_xml
+        binding.pry
         HTTParty.post('https://pahixdemo.azurewebsites.net/api/IdeaCrew/SendToAHS', body: payload)
     end
 end

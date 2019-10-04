@@ -127,7 +127,8 @@ class Insured::VerificationDocumentsController < ApplicationController
   end
 
   def ash_doc_call(doc_uri)
-    AhsDocsReport.call(params: params, user: current_user, doc: doc_uri, doc_owner: @docs_owner)
+    doc_owner = @docs_owner.is_a?(Person) ? @docs_owner : @docs_owner.person
+    AhsDocsReport.call(params: params, user: current_user, doc: doc_uri, doc_owner: doc_owner)
   end
 
 end
