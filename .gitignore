@@ -78,3 +78,5 @@ plan_xmls.zip
 
 # Ignore Wells Fargo Key
 config/ssl
+
+.capistrano
