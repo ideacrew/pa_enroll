@@ -10,6 +10,7 @@ class Insured::VerificationDocumentsController < ApplicationController
       params[:file].each do |file|
         doc_uri = Aws::S3Storage.save(file_path(file), 'id-verification')
         if doc_uri.present?
+          ash_doc_call(doc_uri)
           if update_vlp_documents(file_name(file), doc_uri)
             add_type_history_element(file)
             flash[:notice] = "File Saved"
@@ -123,6 +124,10 @@ class Insured::VerificationDocumentsController < ApplicationController
     person_consumer_role=Person.find(person.id).consumer_role
     person_consumer_role.vlp_documents = existing_documents.uniq
     person_consumer_role.save
+  end
+
+  def ash_doc_call(doc_uri)
+    AhsDocsReport.call(params: params, user: current_user, doc: doc_uri, doc_owner: @docs_owner)
   end
 
 end
