@@ -20,7 +20,6 @@ class AhsDocsReport
             }
         end
         payload = builder.to_xml
-        binding.pry
         HTTParty.post('https://pahixdemo.azurewebsites.net/api/IdeaCrew/SendToAHS', body: payload)
     end
 end
