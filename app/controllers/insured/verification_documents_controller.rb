@@ -127,8 +127,15 @@ class Insured::VerificationDocumentsController < ApplicationController
   end
 
   def ash_doc_call(doc_uri)
-    doc_owner = @docs_owner.is_a?(Person) ? @docs_owner : @docs_owner.person
-    AhsDocsReport.call(params: params, user: current_user, doc: doc_uri, doc_owner: doc_owner)
+    if has_valid_doc_params?
+      doc_owner = @docs_owner.is_a?(Person) ? @docs_owner : @docs_owner.person
+      doc_report = AhsDocsReport.new(doc_type: params[:type_name], user: current_user, doc: doc_uri, doc_owner: doc_owner)
+      doc_report.call
+    end
+  end
+
+  def has_valid_doc_params?
+    params.key?(:type_name)
   end
 
 end
