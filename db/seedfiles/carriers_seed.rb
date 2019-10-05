@@ -19,7 +19,7 @@ cp = org.create_carrier_profile(id: "53e67210eb899a4603000016", abbrev: "DMND", 
 org = Organization.new(office_locations: [hbx_office], fein: "050000000", legal_name: "PA Health Wellness")
 cp = org.create_carrier_profile(id: "53e67210eb899a460300001a", abbrev: "BLHI", hbx_carrier_id: nil, ivl_health: false, ivl_dental: false, shop_health: false, shop_dental: false)
 
-org = Organization.new(office_locations: [hbx_office], fein: "060000000", legal_name: "Independence")
+org = Organization.new(office_locations: [hbx_office], fein: "060000000", legal_name: "Geisinger Health Plan")
 cp = org.create_carrier_profile(id: "53e67210eb899a460300001d", abbrev: "META", hbx_carrier_id: nil, ivl_health: false, ivl_dental: false, shop_health: false, shop_dental: false)
 
 org = Organization.new(office_locations: [hbx_office], fein: "070000000", legal_name: "UPMC Health Plan")
