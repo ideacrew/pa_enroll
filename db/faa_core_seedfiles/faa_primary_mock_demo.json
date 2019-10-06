@@ -1,0 +1,22 @@
+[
+    {
+        "role": "primary",
+        "first_name": "Sally",
+        "last_name": "SampleTest3",
+        "allocated_aptc": 150.00,
+        "is_eligibility_determined": true,
+        "max_aptc": 150.00,
+        "csr_percent": 73,
+        "csr_eligibility_kind": "csr_73"
+    },
+    {
+        "role": "primary",
+        "first_name": "Serg",
+        "last_name": "Lis",
+        "allocated_aptc": 50,
+        "is_eligibility_determined": true,
+        "max_aptc": 50,
+        "csr_percent": 3,
+        "csr_eligibility_kind": "csr_3"
+    }
+]

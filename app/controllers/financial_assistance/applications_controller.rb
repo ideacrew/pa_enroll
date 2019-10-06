@@ -61,7 +61,7 @@ class FinancialAssistance::ApplicationsController < ApplicationController
           @application.submit! if @application.complete?
           payload = generate_payload(@application)
           if @application.publish(payload)
-            dummy_data_for_demo(params) if @application.complete? && @application.is_submitted? #For_Populating_dummy_ED_for_DEMO #temporary
+            dummy_data_for_demo if @application.complete? && @application.is_submitted? #For_Populating_dummy_ED_for_DEMO #temporary
             redirect_to wait_for_eligibility_response_financial_assistance_application_path(@application)
           else
             @application.unsubmit!
@@ -238,31 +238,9 @@ class FinancialAssistance::ApplicationsController < ApplicationController
     redirect_to application_checklist_financial_assistance_applications_path
   end
 
-  def dummy_data_for_demo(params)
+  def dummy_data_for_demo
     #Dummy_ED
-    coverage_year = @person.primary_family.application_applicable_year
-    @model.update_attributes!(aasm_state: "determined", assistance_year: coverage_year, determination_http_status_code: 200)
-
-    @model.tax_households.each do |txh|
-      txh.update_attributes!(allocated_aptc: 200.00, is_eligibility_determined: true, effective_starting_on: Date.new(coverage_year, 01, 01))
-      txh.eligibility_determinations.build(max_aptc: 200.00,
-                                              csr_percent_as_integer: 73,
-                                              csr_eligibility_kind: "csr_73",
-                                              determined_on: TimeKeeper.datetime_of_record - 30.days,
-                                              determined_at: TimeKeeper.datetime_of_record - 30.days,
-                                              premium_credit_strategy_kind: "allocated_lump_sum_credit",
-                                              e_pdc_id: "3110344",
-                                              source: "Haven").save!
-      txh.applicants.first.update_attributes!(is_medicaid_chip_eligible: false, is_ia_eligible: false, is_without_assistance: true) if txh.applicants.count > 0
-      txh.applicants.second.update_attributes!(is_medicaid_chip_eligible: false, is_ia_eligible: true, is_without_assistance: false) if txh.applicants.count > 1
-      txh.applicants.third.update_attributes!(is_medicaid_chip_eligible: true, is_ia_eligible: false, is_without_assistance: false) if txh.applicants.count > 2
-
-      #Update the Income and MEC verifications to Outstanding
-      @model.applicants.each do |applicant|
-        applicant.update_attributes!(:assisted_income_validation => "outstanding", :assisted_mec_validation => "outstanding", aasm_state: "verification_outstanding")
-        applicant.verification_types.each { |verification| verification.update_attributes!(validation_status: "outstanding") }
-      end
-    end
+    DummyDemoData.new(person:@person, model:@model).mock_data
   end
 
   def dummy_data_5_year_bar(application)
