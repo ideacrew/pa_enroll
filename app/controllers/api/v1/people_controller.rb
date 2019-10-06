@@ -7,10 +7,10 @@ module Api
         if has_valid_search_params?
           params[:person][:dob] = Date.strptime(params[:person][:dob], "%m/%d/%Y") if params[:person].key?(:dob)
           params[:person][:encrypted_ssn] = Person.encrypt_ssn(params[:person].delete(:ssn)) if params[:person].key?(:ssn)
-          params[:person][:first_name] = /^#{Regexp.escape(params[:person][:first_name])}$/ if params[:person].key?(:first_name)
-          params[:person][:last_name] = /^#{Regexp.escape(params[:person][:last_name])}$/ if params[:person].key?(:last_name)
+          params[:person][:first_name] = /^#{Regexp.escape(params[:person][:first_name])}$/i if params[:person].key?(:first_name)
+          params[:person][:last_name] = /^#{Regexp.escape(params[:person][:last_name])}$/i if params[:person].key?(:last_name)
 
-          if @person = Person.where(params[:person].permit(:dob, :hbx_id, :encrypted_ssn, :first_name, :last_name)).first
+          if @person = Person.where(params[:person].slice(:dob, :hbx_id, :encrypted_ssn, :first_name, :last_name)).first
             render "events/v2/individuals/search", :formats => [ :xml ], :locals => { :individual => @person }
           else
             head :not_found
@@ -23,8 +23,12 @@ module Api
       private
       def has_valid_search_params?
         params.key?(:person) &&
-          (params[:person].key?(:ssn) ||
-           params[:person].key?(:hbx_id))
+          (params[:person].key?(:ssn) || # ssn only
+            (params[:person].key?(:dob) && # dob and hbx_id
+              params[:person].key?(:hbx_id)) ||
+            (params[:person].key?(:dob) && # dob, first_name and last_name
+              params[:person].key?(:first_name) &&
+              params[:person].key?(:last_name)))
       end
 
       def error

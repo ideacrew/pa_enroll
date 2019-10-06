@@ -16,6 +16,18 @@ describe Api::V1::PeopleController do
     end
   end
 
+  context 'valid with downcased first name, downcased last name and dob' do
+    before do
+      post :search, person: { first_name: person.first_name.downcase,
+                              last_name: person.last_name.downcase,
+                              dob: person.dob }
+    end
+
+    it 'finds and returns the right person' do
+      expect(assigns[:person]).to eq(person)
+    end
+  end
+
   context 'valid with ssn' do
     before do
       post :search, person: { ssn: person.ssn }
