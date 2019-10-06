@@ -27,7 +27,7 @@ class DummyDemoData
                     is_medicaid_chip_eligible: medicaid?(applicant), 
                     is_ia_eligible: ia_elig?(applicant), 
                     is_without_assistance: no_assistance?(applicant))
-            end
+                end
             @model.applicants.each do |applicant|
                 applicant.update_attributes!(:assisted_income_validation => 'outstanding', :assisted_mec_validation => 'outstanding', aasm_state: "verification_outstanding")
                 applicant.verification_types.each { |verification| verification.update_attributes!(validation_status: 'outstanding') }
@@ -38,15 +38,15 @@ class DummyDemoData
     private
 
     def medicaid?(applicant)
-        dependent(applicant).present? ? dependent['is_medicaid_chip_eligible'] : false
+        dependent(applicant).present? ? dependent(applicant)['is_medicaid_chip_eligible'] : false
     end
 
     def ia_elig?(applicant)
-        dependent(applicant).present? ? dependent['is_ia_eligible'] : false
+        dependent(applicant).present? ? dependent(applicant)['is_ia_eligible'] : false
     end
 
     def no_assistance?(applicant)
-        dependent(applicant).present? ? dependent['is_without_assistance'] : true
+        dependent(applicant).present? ? dependent(applicant)['is_without_assistance'] : true
     end
 
 
