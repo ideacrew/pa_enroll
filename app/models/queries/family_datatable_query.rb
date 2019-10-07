@@ -20,7 +20,7 @@ module Queries
       #return Family if @search_string.blank?
       #person_id = Person.search(@search_string).limit(5000).pluck(:_id)
       #family_scope = Family.where('family_members.person_id' => {"$in" => person_id})
-      family = Family.where("is_active" => true)
+      family = Family.where({})
       person = Person
       if @custom_attributes['families'] == 'by_enrollment_individual_market'
         family = family.all_enrollments
