@@ -29,6 +29,8 @@
                 ga('create', 'UA-71192042-1', 'auto');
                 ga('send', 'pageview');
         </script>
+
+      <%= render 'layouts/chatbot' %>
   </head>
   <body class="font">
 
@@ -41,21 +43,5 @@
     </div>
 
     <%= render 'layouts/footer' %>
-
-    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat-es5.js"></script>
-    <script src="https://pa-hix-demo.azureedge.net/files/javascript/chatbot.min.js"></script>
-    <script>
-      $(document).on('ready', function() {
-        setupChat(
-          "PA",
-          "QA",
-          "PAHIXUser",
-          "en",
-          "EVA",
-          window.location.origin
-        );
-      });
-    </script>
-
   </body>
  </html>

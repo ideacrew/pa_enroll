@@ -1,0 +1,16 @@
+<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat-es5.js"></script>
+<script src="https://pa-hix-demo.azureedge.net/files/javascript/chatbot.min.js"></script>
+<script>
+  var ready = function() {
+    console.log('setup');
+    setupChat(
+      "PA",
+      "QA",
+      "PAHIXUser",
+      "en",
+      "EVA",
+      window.location.origin
+    );
+  };
+  $(document).on('ready',ready);
+</script>

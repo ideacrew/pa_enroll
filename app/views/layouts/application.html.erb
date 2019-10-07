@@ -22,6 +22,8 @@
 
     <link rel="stylesheet" href="https://pa-hix-demo.azureedge.net/files/css/webchat.css" />
 
+    <%= render 'layouts/chatbot' %>
+
     <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,20 +52,5 @@
     </div>
 
     <%= render 'layouts/footer' %>
-
-    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat-es5.js"></script>
-    <script src="https://pa-hix-demo.azureedge.net/files/javascript/chatbot.min.js"></script>
-    <script>
-      $(document).on('ready', function() {
-        setupChat(
-          "PA",
-          "QA",
-          "PAHIXUser",
-          "en",
-          "EVA",
-          window.location.origin
-        );
-      });
-    </script>
   </body>
  </html>
