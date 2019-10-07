@@ -61,8 +61,9 @@ module Queries
       #Caution Mongo optimization on chained "$in" statements with same field
       #is to do a union, not an interactionl
       family_scope = family.and('family_members.person_id' => {"$in" => person_id})
-      return family_scope if @order_by.blank?
-      family_scope.order_by(@order_by)
+      return family_scope
+      # return family_scope if @order_by.blank?
+      # family_scope.order_by(@order_by)
     end
 
     def skip(num)
