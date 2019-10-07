@@ -3,7 +3,7 @@ module PortalHeaderHelper
   def portal_display_name(controller)
     profile_id = @broker_agency_profile.id if @broker_agency_profile
     if current_user.nil?
-      "<a class='portal'>#{l10n("welcome.index.byline")}</a>".html_safe
+      "<a class='portal'>#{Settings.site.header_message}</a>".html_safe
     elsif current_user.try(:has_hbx_staff_role?)
       link_to "#{image_tag 'icons/icon-exchange-admin.png'} &nbsp; I'm an Admin".html_safe, main_app.exchanges_hbx_profiles_root_path, class: "portal"
     elsif current_user.person.try(:broker_role)
