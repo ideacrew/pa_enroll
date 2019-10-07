@@ -13,10 +13,100 @@
         "role": "primary",
         "first_name": "Serg",
         "last_name": "Lis",
-        "allocated_aptc": 50,
+        "allocated_aptc": 50.00,
         "is_eligibility_determined": true,
-        "max_aptc": 50,
+        "max_aptc": 50.00,
         "csr_percent": 3,
         "csr_eligibility_kind": "csr_3"
+    },
+    {
+        "role": "primary",
+        "first_name": "Mary",
+        "last_name": "Test12",
+        "allocated_aptc": 0.00,
+        "is_eligibility_determined": true,
+        "max_aptc": 0.00,
+        "csr_percent": 0,
+        "csr_eligibility_kind": "csr_0"
+    },
+    {
+        "role": "primary",
+        "first_name": "Mary",
+        "last_name": "Test12",
+        "allocated_aptc": 0.00,
+        "is_eligibility_determined": true,
+        "max_aptc": 0.00,
+        "csr_percent": 0,
+        "csr_eligibility_kind": "csr_0"
+    },
+    {
+        "role": "primary",
+        "first_name": "Bernadette",
+        "last_name": "Test11",
+        "allocated_aptc": 200.00,
+        "is_eligibility_determined": true,
+        "max_aptc": 200.00,
+        "csr_percent": 73,
+        "csr_eligibility_kind": "csr_73"
+    },
+    {
+        "role": "primary",
+        "first_name": "Andrew",
+        "last_name": "Bradford10",
+        "allocated_aptc": 0.00,
+        "is_eligibility_determined": true,
+        "max_aptc": 0.00,
+        "csr_percent": 0,
+        "csr_eligibility_kind": "csr_0"
+    },
+    {
+        "role": "primary",
+        "first_name": "Paul",
+        "last_name": "Johnson9",
+        "allocated_aptc": 750.00,
+        "is_eligibility_determined": true,
+        "max_aptc": 750.00,
+        "csr_percent": 73,
+        "csr_eligibility_kind": "csr_73"
+    },
+    {
+        "role": "primary",
+        "first_name": "John",
+        "last_name": "Williams8",
+        "allocated_aptc": 300.00,
+        "is_eligibility_determined": true,
+        "max_aptc": 400.00,
+        "csr_percent": 73,
+        "csr_eligibility_kind": "csr_73"
+    },
+    {
+        "role": "primary",
+        "first_name": "Fran",
+        "last_name": "Test4",
+        "allocated_aptc": 0.00,
+        "is_eligibility_determined": true,
+        "max_aptc": 0.00,
+        "csr_percent": 0,
+        "csr_eligibility_kind": "csr_0"
+    },
+    {
+        "role": "primary",
+        "first_name": "Jim",
+        "last_name": "Test3",
+        "allocated_aptc": 150.00,
+        "is_eligibility_determined": true,
+        "max_aptc": 150.00,
+        "csr_percent": 73,
+        "csr_eligibility_kind": "csr_73"
+    },
+    {
+        "role": "primary",
+        "first_name": "Sally",
+        "last_name": "Test2",
+        "allocated_aptc": 0.00,
+        "is_eligibility_determined": true,
+        "max_aptc": 0.00,
+        "csr_percent": 0,
+        "csr_eligibility_kind": "csr_0"
     }
 ]
