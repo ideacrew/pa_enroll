@@ -21,7 +21,7 @@ class DummyDemoData
                 determined_at: TimeKeeper.datetime_of_record - 30.days,
                 premium_credit_strategy_kind: "allocated_lump_sum_credit",
                 e_pdc_id: "3110344",
-                source: "Haven").save!
+                source: "Haven").save(validate: false)
             txh.applicants.each do |applicant|
                 applicant.update_attributes!(
                     is_medicaid_chip_eligible: medicaid?(applicant), 
