@@ -31,8 +31,8 @@ class Enrollments::IndividualMarket::OpenEnrollmentBegin
       @assisted_individuals = aptc_reader.assisted_individuals
       puts "Found #{@assisted_individuals.keys.count} entries in Assisted sheet." unless Rails.env.test?
 
-      process_aqhp_renewals(renewal_benefit_coverage_period)
       process_uqhp_renewals(renewal_benefit_coverage_period)
+      process_aqhp_renewals(renewal_benefit_coverage_period)
 
       @logger.info "Process ended at #{Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%m-%d-%Y %H:%M")}"
     end
