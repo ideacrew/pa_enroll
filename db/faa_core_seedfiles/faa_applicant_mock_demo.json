@@ -10,14 +10,6 @@
     {
         "role": "applicant",
         "first_name": "Sally",
-        "last_name": "SampleTest3",
-        "is_medicaid_chip_eligible": false,
-        "is_ia_eligible": true,
-        "is_without_assistance": false
-    },
-    {
-        "role": "applicant",
-        "first_name": "Sally",
         "last_name": "Test2",
         "is_medicaid_chip_eligible": false,
         "is_ia_eligible": false,
@@ -86,6 +78,7 @@
         "is_medicaid_chip_eligible": false,
         "is_ia_eligible": true,
         "is_without_assistance": false
+
     },
     {
         "role": "applicant",
@@ -153,7 +146,7 @@
     },
     {
         "role": "applicant",
-        "first_name": "BMary",
+        "first_name": "Mary",
         "last_name": "Test12",
         "is_medicaid_chip_eligible": true,
         "is_ia_eligible": false,
@@ -177,26 +170,18 @@
     },
     {
         "role": "applicant",
-        "first_name": "BMary",
-        "last_name": "Test12",
-        "is_medicaid_chip_eligible": true,
+        "first_name": "William",
+        "last_name": "Test13",
+        "is_medicaid_chip_eligible": false,
         "is_ia_eligible": false,
-        "is_without_assistance": false
+        "is_without_assistance": true
     },
     {
         "role": "applicant",
-        "first_name": "Child",
-        "last_name": "Test12",
-        "is_medicaid_chip_eligible": true,
-        "is_ia_eligible": false,
-        "is_without_assistance": false
-    },
-    {
-        "role": "applicant",
-        "first_name": "Child2",
-        "last_name": "Test12",
-        "is_medicaid_chip_eligible": true,
-        "is_ia_eligible": false,
+        "first_name": "Washington",
+        "last_name": "Jefferson14",
+        "is_medicaid_chip_eligible": false,
+        "is_ia_eligible": true,
         "is_without_assistance": false
     }
 ]
